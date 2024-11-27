@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/', // URL do backend Django
+    baseURL: 'http://127.0.0.1:8000/', // URL do backend Django
 });
 
 export const getFuncionarios = () => api.get('funcionarios/');

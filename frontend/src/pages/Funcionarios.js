@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 
 function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([
-    { id: 1, nome: 'João Silva', cargo: 'Desenvolvedor', departamento: 'TI' },
-    { id: 2, nome: 'Maria Oliveira', cargo: 'Analista de RH', departamento: 'Recursos Humanos' },
-    { id: 3, nome: 'Carlos Pereira', cargo: 'Gerente', departamento: 'Financeiro' },
+    //{ id: 1, nome: 'João Silva', cargo: 'Desenvolvedor', departamento: 'TI' },
+    //{ id: 2, nome: 'Maria Oliveira', cargo: 'Analista de RH', departamento: 'Recursos Humanos' },
+    //{ id: 3, nome: 'Carlos Pereira', cargo: 'Gerente', departamento: 'Financeiro' },
   ]);
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/funcionarios')
+      .then(response => setFuncionarios(response.data))
+      .catch(error => console.error('Erro ao buscar dados:', error));
+  }, []);
 
   // Função para remover um funcionário
   const removerFuncionario = (id) => {

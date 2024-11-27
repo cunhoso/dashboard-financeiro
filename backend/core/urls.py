@@ -10,4 +10,5 @@ router.register(r'lucros', LucroViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('api/funcionarios/', FuncionarioViewSet.as_view({'get': 'list'}), name='funcionario-list'),
 ]
